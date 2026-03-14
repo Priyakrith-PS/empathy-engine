@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Empathy Engine</title>
+
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f5f7fb;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        background: white;
+        padding: 30px;
+        width: 520px;
+        border-radius: 10px;
+        box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 5px;
+      }
+
+      .subtitle {
+        text-align: center;
+        color: #666;
+        margin-bottom: 20px;
+        font-size: 14px;
+      }
+
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        resize: none;
+        font-size: 14px;
+      }
+
+      button {
+        margin-top: 15px;
+        width: 100%;
+        padding: 12px;
+        background: #4a6cf7;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 15px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #3a58d8;
+      }
+
+      .results {
+        margin-top: 20px;
+        padding: 15px;
+        background: #f0f3ff;
+        border-radius: 6px;
+      }
+
+      .label {
+        font-weight: bold;
+      }
+
+      audio {
+        width: 100%;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Empathy Engine</h1>
+      <div class="subtitle">
+        Emotion-aware AI speech synthesis - Made by Priyakrith P S
+        priyakrith.ps@gmail.com
+      </div>
+
+      <form method="POST">
+        <textarea
+          name="text"
+          rows="5"
+          placeholder="Enter text to generate emotionally expressive speech..."
+        ></textarea>
+
+        <button type="submit" onclick="showLoading()">Generate Voice</button>
+      </form>
+      <div
+        id="loading"
+        style="display: none; margin-top: 15px; text-align: center"
+      >
+        Generating emotional speech...
+      </div>
+
+      {% if emotion %}
+
+      <div class="results">
+        <p><span class="label">Detected Emotion:</span> {{ emotion }}</p>
+        <p><span class="label">Speech Style:</span> {{ style }}</p>
+
+        {% if confidence %}
+        <p><span class="label">Confidence:</span> {{ confidence }}</p>
+        {% endif %} {% if audio_file %}
+        <audio controls>
+          <source src="{{ audio_file }}" type="audio/mp3" />
+        </audio>
+        {% endif %}
+      </div>
+
+      {% endif %}
+    </div>
+    <script>
+      function showLoading() {
+        document.getElementById("loading").style.display = "block";
+      }
+    </script>
+  </body>
+</html>
