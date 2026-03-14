@@ -1,5 +1,5 @@
 flask
 transformers
 torch
-requests
-elevenlabs
+google-cloud-texttospeech
+python-dotenv
