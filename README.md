@@ -107,6 +107,10 @@ Anger: This situation is extremely frustrating!
 Surprise: Wait... what just happened?!
 
 ---
+## Demo
+
+![Empathy Engine Demo](screenshot.png)
+
 
 ## Future Improvements
 
